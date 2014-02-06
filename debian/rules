@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+export http_proxy = http://127.0.1.1:9/
+export https_proxy = ${http_proxy}
+
+%:
+	dh $@ --with python2,python3
+
+override_dh_auto_build:
+	dh_auto_build
+	set -ex; for python in $(shell py3versions -r); do \
+		$$python setup.py build; \
+	done;
+
+override_dh_auto_install:
+	dh_auto_install
+	set -ex; for python in $(shell py3versions -r); do \
+		$$python setup.py install --root=$(CURDIR)/debian/tmp --install-layout=deb; \
+	done;
+
+override_dh_auto_test:
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	chmod 755 $(CURDIR)/debian/bin/gpg
+	set -ex; for py in $(shell pyversions -r -v); do \
+		PATH=$(CURDIR)/debian/bin:$$PATH PYTHONPATH=$(CURDIR)/build/lib.*-$$py python$$py test_gnupg.py ;\
+	done
+	set -ex; for python in $(shell py3versions -r); do \
+		cp test_gnupg.py test_gnupg_3.py ;\
+		2to3 -w test_gnupg_3.py ;\
+		PATH=$(CURDIR)/debian/bin:$$PATH PYTHONPATH=$(CURDIR)/build/lib $$python test_gnupg_3.py ;\
+		rm test_gnupg_3.py ;\
+	done
+endif
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build/ keys/ __pycache__/

@@ -1,0 +1,42 @@
+Description: Skip tests that require internet access
+Forwarded: not-needed
+Author: Elena Grandi <elena.valhalla@gmail.com>
+--- a/gnupg.py
++++ b/gnupg.py
+@@ -948,8 +948,8 @@
+         >>> shutil.rmtree("keys")
+         >>> gpg = GPG(gnupghome="keys")
+         >>> os.chmod('keys', 0x1C0)
+-        >>> result = gpg.recv_keys('keyserver.ubuntu.com', '92905378')
+-        >>> assert result
++        >>> result = gpg.recv_keys('keyserver.ubuntu.com', '92905378')  # doctest: +SKIP
++        >>> assert result  # doctest: +SKIP
+ 
+         """
+         result = self.result_map['import'](self)
+@@ -1067,11 +1067,11 @@
+         >>> shutil.rmtree('keys')
+         >>> gpg = GPG(gnupghome='keys')
+         >>> os.chmod('keys', 0x1C0)
+-        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')
+-        >>> assert result
++        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')  # doctest: +SKIP
++        >>> assert result  # doctest: +SKIP
+         >>> keyserver = 'keyserver.ubuntu.com'
+-        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>', keyserver)
+-        >>> assert result
++        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>', keyserver)  # doctest: +SKIP
++        >>> assert result  # doctest: +SKIP
+ 
+         """
+ 
+--- a/test_gnupg.py
++++ b/test_gnupg.py
+@@ -452,6 +452,7 @@
+                     os.remove(fn)
+         logger.debug("test_file_encryption_and_decryption ends")
+ 
++    @unittest.skip('requires network')
+     def test_search_keys(self):
+         "Test that searching for keys works"
+         r = self.gpg.search_keys('<vinay_sajip@hotmail.com>')

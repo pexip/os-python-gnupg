@@ -1,0 +1,80 @@
+python-gnupg (0.3.6-1) unstable; urgency=high
+
+  * New upstream release. Closes: #738509, #736496.
+  * CVE-2014-1928 (Erroneous insertion of a \ character) fixed upstream
+  * CVE-2014-1927 (Erroneous assumptions about the usability of " characters) 
+    fixed upstream
+  * CVE-2013-7323 (Unrestricted use of unquoted strings in a shell) 
+    fixed upstream
+  * Updated watch file for new download source (pypi).
+  * Updated standard versions to 3.9.5 (no change needed).
+  * Removed use_quick_random_for_gnupg_1.patch (applied upstream).
+  * Updated project homepage
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Thu, 06 Feb 2014 09:52:10 +0100
+
+python-gnupg (0.3.5-2) unstable; urgency=low
+
+  [ Dmitry Shachnev ]
+  * Skip more tests that require network connection. Closes: #721965.
+
+  [ Elena Grandi ]
+  * Discard http(s) traffic to catch early further similar problems.
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Sun, 15 Sep 2013 11:36:49 +0200
+
+python-gnupg (0.3.5-1) unstable; urgency=low
+
+  * New upstream release. Closes: #721296, #721294.
+  * Updated standard versions to 3.9.4 (no change needed).
+  * Reverted simplification of --quick-random workaround.
+  * Adding --quick-random instead of --debug-quick-random for 
+    gnupg < 2.
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Sat, 31 Aug 2013 09:10:31 +0200
+
+python-gnupg (0.3.4-1) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Elena Grandi ]
+  * New upstream release. Closes: #695796
+  * Removed testsuite patches (merged upstream).
+  * Simplified --quick-random workaround thanks to partial upstream 
+    fixes. https://code.google.com/p/python-gnupg/issues/detail?id=61
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Thu, 06 Jun 2013 09:03:28 +0200
+
+python-gnupg (0.3.0-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Work around test suite hangs by adding --quick-random when generating
+    keys. Closes: #682648
+
+ -- Helmut Grohne <helmut@subdivi.de>  Mon, 22 Oct 2012 23:30:19 +0200
+
+python-gnupg (0.3.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Patched testsuite to return nonzero on failure. Closes: #671259
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Thu, 17 May 2012 09:18:35 +0000
+
+python-gnupg (0.2.9-2) unstable; urgency=low
+
+  * Honour DEB_BUILD_OPTIONS=nocheck Closes: 670975
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Tue, 01 May 2012 16:16:46 +0000
+
+python-gnupg (0.2.9-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Thu, 19 Apr 2012 12:13:20 +0000
+
+python-gnupg (0.2.8-1) unstable; urgency=low
+
+  * Initial release. Closes: 660842
+
+ -- Elena Grandi <elena.valhalla@gmail.com>  Tue, 27 Mar 2012 14:17:48 +0000
