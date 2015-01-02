@@ -1,6 +1,7 @@
 Source: python-gnupg
-Maintainer: Elena Grandi <elena.valhalla@gmail.com>
-Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Elena Grandi <elena.valhalla@gmail.com>
+XSBC-Pexip-Original-Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
 Section: python
 Priority: optional
 Build-Depends: python-all (>= 2.6.6-3~), python3-all (>= 3.1.2-7~), debhelper (>= 7.0.50~)
@@ -10,6 +11,7 @@ Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/python-gnupg/trunk/
 Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/python-gnupg/trunk/
 X-Python-Version: >= 2.6
 X-Python3-Version: >= 3.1
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: python-gnupg
 Architecture: all
