@@ -1,24 +1,24 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: python-gnupg
 Upstream-Contact: Vinay Sajip <vsajip@gmail.com>
-Source: http://code.google.com/p/python-gnupg/
+Source: https://bitbucket.org/vinay.sajip/python-gnupg
 
 Files: *
-Copyright: 2008-2011 by Vinay Sajip
-License: BSD
+Copyright: 2008-2014 by Vinay Sajip
+License: BSD-3-clause
 
 Files: gnupg.py
-Copyright: 2008-2011 by Vinay Sajip
+Copyright: 2008-2014 by Vinay Sajip
  2005 Steve Traugott
  2003 Richard Jones
-License: BSD and pycrypto
+License: BSD-3-clause and pycrypto
 
 Files: debian/*
-Copyright: 2012 Elena Grandi
-License: BSD
+Copyright: 2012-2014 Elena Grandi
+License: BSD-3-clause
 
-License: BSD
- Copyright (c) 2008-2011 by Vinay Sajip.
+License: BSD-3-clause
+ Copyright (c) 2008-2014 by Vinay Sajip.
  All rights reserved.
  .
  Redistribution and use in source and binary forms, with or without

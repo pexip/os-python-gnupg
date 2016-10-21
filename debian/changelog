@@ -1,3 +1,61 @@
+python-gnupg (0.3.9-1) unstable; urgency=medium
+
+  * Removed patches merged upstream.
+  * New upstream release.
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Fri, 21 Oct 2016 15:23:17 +0200
+
+python-gnupg (0.3.8-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Elena Grandi ]
+  * Force using gpg1 at build time
+  * Default on gpg1
+  * Updated standard version to 3.9.8 (no changes needed)
+  * Add explicit build-dependency on gnupg1 (Closes: #834600)
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Wed, 17 Aug 2016 19:48:02 +0200
+
+python-gnupg (0.3.8-2) unstable; urgency=medium
+
+  [Andreas Noteng <andreas@noteng.no>]
+  * Subkey fingerprints are no longer incorrectly captured (Closes: #802967)
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Sun, 29 Nov 2015 14:50:12 +0100
+
+python-gnupg (0.3.8-1) unstable; urgency=medium
+
+  [ Elena Grandi ]
+  * New upstream release
+  * tarball signature manually checked from
+    https://pypi.python.org/pypi/python-gnupg/0.3.8
+  * Updated compat to 9
+
+  [ DPMT ]
+  * Update Vcs fields for git migration
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Tue, 13 Oct 2015 10:30:35 +0200
+
+python-gnupg (0.3.7-2) unstable; urgency=medium
+
+  * Upload to sid of new upstream release.
+  * Converted to pybuild.
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Sun, 03 May 2015 10:12:30 +0200
+
+python-gnupg (0.3.7-1) experimental; urgency=medium
+
+  * New upstream release. Closes: #774770.
+  * Skipped one test that is failing because of missing files.
+  * Updated watch file to use http://pypi.debian.net and check gpg signature.
+  * Fixed short name of the BSD-3-clause license in debian/copyright.
+  * Updated standard versions to 3.9.6 (no change needed).
+  * Fixed capitalization in description.
+
+ -- Elena Grandi <valhalla-d@trueelena.org>  Thu, 05 Feb 2015 11:36:16 +0100
+
 python-gnupg (0.3.6-1) unstable; urgency=high
 
   * New upstream release. Closes: #738509, #736496.

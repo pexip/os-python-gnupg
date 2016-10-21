@@ -1,1 +1,2 @@
 skip_network_needing_test.patch
+0002-Default-on-using-gpg1-as-gpgbinary.patch

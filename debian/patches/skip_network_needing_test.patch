@@ -1,9 +1,20 @@
-Description: Skip tests that require internet access
+From 7a72a5cdc56afed312e44dd45ecc17b026469935 Mon Sep 17 00:00:00 2001
+From: Elena Grandi <elena.valhalla@gmail.com>
+Date: Thu, 8 Oct 2015 12:11:21 -0700
+Subject: Skip tests that require internet access
+
 Forwarded: not-needed
-Author: Elena Grandi <elena.valhalla@gmail.com>
+Patch-Name: skip_network_needing_test.patch
+---
+ gnupg.py      | 12 ++++++------
+ test_gnupg.py |  1 +
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/gnupg.py b/gnupg.py
+index 4515841..2a08d96 100644
 --- a/gnupg.py
 +++ b/gnupg.py
-@@ -948,8 +948,8 @@
+@@ -1066,8 +1066,8 @@ class GPG(object):
          >>> shutil.rmtree("keys")
          >>> gpg = GPG(gnupghome="keys")
          >>> os.chmod('keys', 0x1C0)
@@ -14,27 +25,29 @@ Author: Elena Grandi <elena.valhalla@gmail.com>
  
          """
          result = self.result_map['import'](self)
-@@ -1067,11 +1067,11 @@
+@@ -1215,11 +1215,11 @@ class GPG(object):
          >>> shutil.rmtree('keys')
          >>> gpg = GPG(gnupghome='keys')
          >>> os.chmod('keys', 0x1C0)
 -        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')
--        >>> assert result
+-        >>> assert result, 'Failed using default keyserver'
 +        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')  # doctest: +SKIP
-+        >>> assert result  # doctest: +SKIP
++        >>> assert result, 'Failed using default keyserver'  # doctest: +SKIP
          >>> keyserver = 'keyserver.ubuntu.com'
 -        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>', keyserver)
--        >>> assert result
+-        >>> assert result, 'Failed using keyserver.ubuntu.com'
 +        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>', keyserver)  # doctest: +SKIP
-+        >>> assert result  # doctest: +SKIP
++        >>> assert result, 'Failed using keyserver.ubuntu.com'  # doctest: +SKIP
  
          """
- 
+         query = query.strip()
+diff --git a/test_gnupg.py b/test_gnupg.py
+index 34c48bb..3559e62 100644
 --- a/test_gnupg.py
 +++ b/test_gnupg.py
-@@ -452,6 +452,7 @@
-                     os.remove(fn)
-         logger.debug("test_file_encryption_and_decryption ends")
+@@ -694,6 +694,7 @@ class GPGTestCase(unittest.TestCase):
+             shutil.rmtree(d)
+         logger.debug("test_filename_with_spaces ends")
  
 +    @unittest.skip('requires network')
      def test_search_keys(self):
