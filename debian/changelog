@@ -1,3 +1,9 @@
+python-gnupg (0.3.9-1pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:44:04 +0000
+
 python-gnupg (0.3.9-1) unstable; urgency=medium
 
   * Removed patches merged upstream.
