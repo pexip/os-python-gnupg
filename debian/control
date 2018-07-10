@@ -1,22 +1,22 @@
 Source: python-gnupg
 Maintainer: Pexip AS <packaging@pexip.com>
-XSBC-Pexip-Original-Maintainer: Elena Grandi <elena.valhalla@gmail.com>
+XSBC-Pexip-Original-Maintainer: Elena Grandi <valhalla-d@trueelena.org>
 XSBC-Pexip-Original-Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
 Section: python
 Priority: optional
-Build-Depends: python-all (>= 2.6.6-3~), python3-all (>= 3.1.2-7~), debhelper (>= 7.0.50~)
-Standards-Version: 3.9.5
+Build-Depends: python-all (>= 2.6.6-3~), python3-all (>= 3.1.2-7~), debhelper (>= 9), dh-python, gnupg1
+Standards-Version: 3.9.8
 Homepage: https://bitbucket.org/vinay.sajip/python-gnupg
-Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/python-gnupg/trunk/
-Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/python-gnupg/trunk/
+Vcs-Git: https://anonscm.debian.org/git/python-modules/packages/python-gnupg.git
+Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/python-gnupg.git
 X-Python-Version: >= 2.6
-X-Python3-Version: >= 3.1
+X-Python3-Version: >= 3.2
 XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: python-gnupg
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, gnupg
-Description: Python wrapper for the Gnu Privacy Guard (Python 2.x)
+Depends: ${misc:Depends}, ${python:Depends}, gnupg1
+Description: Python wrapper for the GNU Privacy Guard (Python 2.x)
  Python-GnuPG allows easy and well-documented access to basic GnuPG
  functionality such as generating and managing keys, encrypting and
  decrypting data, signing and verifying messages.
@@ -25,8 +25,8 @@ Description: Python wrapper for the Gnu Privacy Guard (Python 2.x)
 
 Package: python3-gnupg
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, gnupg
-Description: Python wrapper for the Gnu Privacy Guard (Python 3.x)
+Depends: ${misc:Depends}, ${python3:Depends}, gnupg1
+Description: Python wrapper for the GNU Privacy Guard (Python 3.x)
  Python-GnuPG allows easy and well-documented access to basic GnuPG
  functionality such as generating and managing keys, encrypting and
  decrypting data, signing and verifying messages.
