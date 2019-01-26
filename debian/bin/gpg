@@ -1,0 +1,7 @@
+#!/bin/sh
+GPG=`which -a gpg | uniq | tail -n+2 | head -n1`
+if echo "$*" | grep -q gen-key; then
+    exec "$GPG" --debug-quick-random "$@"
+else
+    exec "$GPG" "$@"
+fi

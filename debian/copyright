@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: python-gnupg
 Upstream-Contact: Vinay Sajip <vsajip@gmail.com>
 Source: https://bitbucket.org/vinay.sajip/python-gnupg
@@ -57,4 +57,3 @@ License: pycrypto
  (though that would be nice).
  .
  --amk                                                    (www.amk.ca)
-
