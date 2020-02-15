@@ -26,6 +26,15 @@ You can install this package from the Python Package Index (pyPI) by running::
 
     pip install python-gnupg
 
+.. important::
+   There is at least one fork of this project, which was apparently created
+   because an earlier version of this software used the ``subprocess`` module
+   with ``shell=True``, making it vulnerable to shell injection. **This is no
+   longer the case**.
+
+   Forks may not be drop-in compatible with this software, so take care to use
+   the correct version, as indicated in the ``pip install`` command above.
+
 
 Installing from a source distribution archive
 ---------------------------------------------
@@ -52,12 +61,132 @@ however, 100% backwards-compatible with earlier incarnations.
 Change log
 ==========
 
-N.B: GCnn refers to an issue nn on Google Code.
+.. note:: GCnn refers to an issue nn on Google Code.
 
-0.4.0 (future)
+0.4.5 (future)
 --------------
 
-Released: Not yet
+Released: Not yet.
+
+
+0.4.4
+-----
+
+Released: 2019-01-24
+
+* Fixed #108: Changed how any return value from the ``on_data`` callable is
+  processed. In earlier versions, the return value was ignored. In this version,
+  if the return value is ``False``, the data received from ``gpg`` is not
+  buffered. Otherwise (if the value is ``None`` or ``True``, for example), the
+  data is buffered as normal. This functionality can be used to do your own
+  buffering, or to prevent buffering altogether.
+
+  The ``on_data`` callable is also called once with an empty byte-string to
+  signal the end of data from ``gpg``.
+
+* Fixed #97: Added an additional attribute ``check_fingerprint_collisions`` to
+  ``GPG`` instances, which defaults to ``False``. It seems that ``gpg`` is happy
+  to have duplicate keys and fingerprints in a keyring, so we can't be too
+  strict. A user can set this attribute of an instance to ``True`` to trigger a
+  check for collisions.
+
+* Fixed #111: With GnuPG 2.2.7 or later, provide the fingerprint of a signing
+  key for a failed signature verification, if available.
+
+* Fixed #21: For verification where multiple signatures are involved, a
+  mapping of signature_ids to fingerprint, keyid, username, creation date,
+  creation timestamp and expiry timestamp is provided.
+
+* Added a check to disallow certain control characters ('\r', '\n', NUL) in
+  passphrases.
+
+
+0.4.3
+-----
+
+Released: 2018-06-13
+
+* Added --no-verbose to the gpg command line, in case verbose is specified in
+  gpg.conf - we don't need verbose output.
+
+
+0.4.2
+-----
+
+Released: 2018-03-28
+
+* Fixed #81: Subkey information is now collected and returned in a ``subkey_info``
+  dictionary keyed by the subkey's ID.
+
+* Fixed #84: GPG2 version is now correctly detected on OS X.
+
+* Fixed #94: Added ``expect_passphrase`` password for use on GnuPG >= 2.1 when
+  passing passphrase to ``gpg`` via pinentry.
+
+* Fixed #95: Provided a ``trust_keys`` method to allow setting the trust level
+  for keys. Thanks to William Foster for a suggested implementation.
+
+* Made the exception message when the gpg executable is not found contain the
+  path of the executable that was tried. Thanks to Kostis Anagnostopoulos for
+  the suggestion.
+
+* Fixed #100: Made the error message less categorical in the case of a failure
+  with an unspecified reason, adding some information from gpg error codes when
+  available.
+
+
+0.4.1
+-----
+
+Released: 2017-07-06
+
+* Updated message handling logic to no longer raise exceptions when a message
+  isn't recognised. Thanks to Daniel Kahn Gillmor for the patch.
+
+* Always use always use ``--fixed-list-mode``, ``--batch`` and
+  ``--with-colons``. Thanks to Daniel Kahn Gillmor for the patch.
+
+* Improved ``scan_keys()`` handling on GnuPG >= 2.1. Thanks to Daniel Kahn
+  Gillmor for the patch.
+
+* Improved test behaviour with GnuPG >= 2.1. Failures when deleting test
+  directory trees are now ignored. Thanks to Daniel Kahn Gillmor for the patch.
+
+* Added ``close_file`` keyword argument to verify_file to allow the file closing
+  to be made optional. Current behaviour is maintained - ``close_file=False``
+  can be passed to skip closing the file being verified.
+
+* Added the ``extra_args`` keyword parameter to allow custom arguments to be
+  passed to the ``gpg`` executable.
+
+* Instances of the ``GPG`` class now have an additional ``on_data`` attribute,
+  which defaults to ``None``. It can be set to a callable which will be called
+  with a single argument - a binary chunk of data received from the ``gpg``
+  executable. The callable can do whatever it likes with the chunks passed to it
+  - e.g. write them to a separate stream. The callable should not raise any
+  exceptions (unless it wants the current operation to fail).
+
+
+0.4.0
+-----
+
+Released: 2017-01-29
+
+* Added support for ``KEY_CONSIDERED`` in more places - encryption /
+  decryption, signing, key generation and key import.
+
+* Partial fix for #32 (GPG 2.1 compatibility). Unfortunately, better
+  support cannot be provided at this point, unless there are certain
+  changes (relating to pinentry popups) in how GPG 2.1 works.
+
+* Fixed #60: An IndexError was being thrown by ``scan_keys()``.
+
+* Ensured that utf-8 encoding is used when the ``--with-column`` mode is
+  used. Thanks to Yann Leboulanger for the patch.
+
+* ``list_keys()`` now uses ``--fixed-list-mode``. Thanks to Werner Koch
+  for the pointer.
+
 
 0.3.9
 -----
