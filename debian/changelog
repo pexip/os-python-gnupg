@@ -1,3 +1,9 @@
+python-gnupg (0.4.4-1pexip1) pexip; urgency=medium
+
+  * Migrate to Buster
+
+ -- Vincent Sanders <vince@pexip.com>  Sun, 01 Mar 2020 00:09:17 +0000
+
 python-gnupg (0.4.4-1) unstable; urgency=medium
 
   * Mark all packages Multi-Arch: foreign (closes: #918799).
