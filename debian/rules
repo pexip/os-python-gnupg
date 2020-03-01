@@ -3,13 +3,14 @@
 export http_proxy = http://127.0.1.1:9/
 export https_proxy = ${http_proxy}
 export PYBUILD_NAME=gnupg
+export NO_EXTERNAL_TESTS=true
 
 %:
 	dh $@ --with python2,python3 --buildsystem=pybuild
 
 override_dh_auto_test:
 ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
-	chmod 755 $(CURDIR)/debian/bin/gpg1
+	chmod 755 $(CURDIR)/debian/bin/gpg
 	set -ex; for py in $(shell pyversions -r -v); do \
 		PATH=$(CURDIR)/debian/bin:$$PATH PYTHONPATH=$(CURDIR)/build/lib.*-$$py python$$py test_gnupg.py ;\
 	done
