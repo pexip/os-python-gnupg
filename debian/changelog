@@ -1,3 +1,9 @@
+python-gnupg (0.4.4-1pexip3) pexip; urgency=medium
+
+  * No-change rebuild to go into the main archive
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 26 Oct 2020 17:36:29 +0000
+
 python-gnupg (0.4.4-1pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment
